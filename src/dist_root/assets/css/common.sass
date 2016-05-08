@@ -1,0 +1,263 @@
+@import init
+
+/***********************************************************************
+  reset
+  *********************************************************************
+@import reset
+
+/***********************************************************************
+  base
+  *********************************************************************
+@import styles/base
+
+/***********************************************************************
+  layout
+  *********************************************************************
+@import styles/layout
+
+/***********************************************************************
+  header, contents, footer
+  ※header, footerは#GHead, #GFoot内にスタイルを記述することで、他の場所への
+  　影響を防ぐ
+  *********************************************************************
+#GHead
+  padding: 20px 0 0
+  margin-bottom: 40px
+  +clearfix
+  .logo
+    a
+      display: block
+    .logoTxt
+      display: inline-block
+      color: $txtColor
+      font-weight: bold
+      letter-spacing: 0.05em
+      font-size: 2.0rem
+      border-bottom: 4px solid $txtColor
+    a:hover .logoTxt
+      color: $linkColor
+      border-color: $linkColor
+    +mq-not-sp
+      float: left
+    +mq-sp
+      text-align: center
+      margin-bottom: 3.0rem
+  .gnav
+    ul
+      li
+        display: inline-block
+        font-weight: bold
+        font-size: 1.5rem
+        color: $grayTxtColor
+        &:first-child
+          margin-left: 0
+        a
+          +ov_colored
+    +mq-not-sp
+      float: right
+      ul
+        li
+          margin-left: 0.5em
+    +mq-sp
+      background: $lightGrayColor
+      border-top: 1px solid darken($lightGrayColor, 20%)
+      border-bottom: 1px solid darken($lightGrayColor, 20%)
+      padding: 0.3em
+      ul
+        text-align: center
+        li
+          margin: 0.2em 0.5em
+
+#Contents
+  margin-bottom: 50px
+  +mq-sp
+    padding: 0 10px
+
+#GFoot
+  padding-bottom: 20px
+  .copy
+    text-align: center
+    font-size: 1.2rem
+    color: $grayTxtColor
+
+/***********************************************************************
+  module
+  *********************************************************************
+.mArticle
+  .mArticle_side
+  .mArticle_main
+    &:after
+      margin-top: 3em
+      content: ''
+      display: block
+      width: 20%
+      height: 5px
+      background: $lightGrayColor
+      margin: 0 auto
+  .mArticle_date
+    font-size: 1.6rem
+    font-weight: bold
+  .mArticle_author
+    color: $grayTxtColor
+    font-size: 1.4rem
+  +mq-sp
+    .mArticle_date, .mArticle_author
+      display: inline-block
+    .mArticle_date
+      margin-right: 0.5rem
+  .mArticle_tit
+    font-size: 3.2rem
+    line-height: 1.4
+    font-weight: bold
+    margin-bottom: 10px
+    a
+      +ov_colored
+  .mArticle_categories
+    margin-bottom: 1.4rem
+    li
+      display: inline-block
+      color: $grayTxtColor
+      font-size: 1.4rem
+      a
+        +ov_colored
+        &:before
+          content: '#'
+  .mArticle_kv
+    img
+      width: 100%
+  .mArticle_content
+    margin: 2.0rem 0
+    h1
+      font-size: 2.4rem
+      font-weight: bold
+      border-bottom: 3px solid #333333
+      margin: 1em 0
+    h2
+      font-size: 1.8rem
+      font-weight: bold
+      border-bottom: 1px solid #333333
+      margin: 1em 0
+    h3
+      font-size: 1.7rem
+      font-weight: bold
+      margin: 1em 0
+    p
+      margin: 1em 0
+    ul, ol
+      padding-left: 1.4em
+      margin: 1em 0
+    ul
+      list-style: disc
+    ol
+      list-style: decimal
+    pre
+      background: #eeeeee
+      padding: 10px
+      overflow: auto
+      margin: 1em 0
+  .mArticle_snsBtns
+    +clearfix
+    li
+      float: left
+      +mq-not-sp
+        margin-left: 10px
+        &:first-child
+          margin-left: 0
+      +mq-sp
+        width: 33.3333%
+  .mArticle_snsBtn
+    background: #eeeeee
+    text-align: center
+    color: inherit
+    text-decoration: none
+
+    font-weight: bold
+    &:hover
+      color: inherit
+      text-decoration: none
+      opacity: 0.8
+    &.mArticle_snsBtn-tw
+      background: #309AEA
+      color: #ffffff
+      &:hover
+        color: #ffffff
+    &.mArticle_snsBtn-fb
+      background: #30487B
+      color: #ffffff
+      &:hover
+        color: #ffffff
+    &.mArticle_snsBtn-hb
+      background: #0075B5
+      color: #ffffff
+      &:hover
+        color: #ffffff
+    +mq-not-sp
+      display: inline-block
+      border-radius: 5px
+      padding: 0.8em 1.0em
+      font-size: 1.6rem
+    +mq-sp
+      display: block
+      font-size: 1.2rem
+      padding: 0.8em 0.2em
+
+
+
+
+
+
+
+.mSubNav
+  .mSubNav_tit
+    font-size: 1.8rem
+    font-weight: bold
+  .mSubNav_items
+    li
+      a
+        display: block
+      .mSubNav_itemInner
+        padding: 0.5em 0
+        border-bottom: 1px solid $lightGrayColor
+
+.mBtn
+  display: inline-block
+  border-radius: 5px
+  background: #eeeeee
+  text-align: center
+  color: inherit
+  text-decoration: none
+  padding: 0.6em 1.0em
+  font-weight: bold
+  &:hover
+    color: inherit
+    text-decoration: none
+    opacity: 0.8
+  &.mBtn-link
+    box-sizing: border-box
+    border: 1px solid $linkColor
+    background: transparent
+    color: $linkColor
+    font-weight: normal
+    &:hover
+      opacity: 1
+      background: $linkColor
+      color: #ffffff
+  &.mBtn-water
+    background: #309AEA
+    color: #ffffff
+    &:hover
+      color: #ffffff
+  &.mBtn-darkBlue
+    background: #30487B
+    color: #ffffff
+    &:hover
+      color: #ffffff
+  &.mBtn-blue
+    background: #0075B5
+    color: #ffffff
+    &:hover
+      color: #ffffff
+  +mq-not-sp
+    font-size: 1.6rem
+  +mq-sp
+    font-size: 1.2rem

@@ -1,0 +1,25 @@
+@import init
+
+#Contents .articleList
+  margin-bottom: 8.0rem
+  > li
+    margin-top: 7.0rem
+    &:first-child
+      margin-top: 0
+
+
+#Contents .pagination
+  text-align: center
+  .page-numbers
+    color: $grayTxtColor
+    font-weight: bold
+    display: inline-block
+    padding: 0.6rem 1.1rem
+    border-radius: 5px
+    margin: 0 0.5rem
+    font-size: 1.4rem
+    &.current
+      background: $lightGrayColor
+      color: #ffffff
+  a.page-numbers:hover
+    background: $lightGrayColor

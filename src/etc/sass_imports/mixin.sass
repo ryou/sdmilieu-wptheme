@@ -1,0 +1,39 @@
+@import variables
+
+// media query
+=mq-pc
+  @media only screen and (min-width: 960px)
+    @content
+
+=mq-not-pc
+  @media only screen and (max-width: 959px)
+    @content
+
+=mq-tb
+  @media only screen and (min-width: 768px) and (max-width: 959px)
+    @content
+
+=mq-not-sp
+  @media only screen and (min-width: 768px)
+    @content
+
+=mq-sp
+  @media only screen and (max-width: 767px)
+    @content
+
+
+
+// others
+=clearfix
+  &:after
+    content: ''
+    clear: both
+    display: block
+
+=col($n)
+  width: (60*$n + 20*($n - 1)) * 1px
+
+=ov_colored
+  color: inherit
+  &:hover
+    color: $linkColor

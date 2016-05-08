@@ -1,0 +1,11 @@
+extends ../etc/jade_templates/layout.jade
+
+//- layoutに記述されている情報をデフォルトとして使用するために「block append」を使用
+block append vars
+  - meta.title = '404 Page not found | SD MILIEU'
+  - extCss = [root_path + 'assets/css/404.css'];
+
+block contents
+  p.error
+    span.status 404
+    span.note Page not found

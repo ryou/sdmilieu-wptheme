@@ -1,0 +1,70 @@
+//- 変数宣言
+if is_dev
+  -
+    var root_path = './';
+else
+  -
+    var root_path = '<?php echo get_template_directory_uri(); ?>/';
+
+block vars
+  -
+    //- メタ情報
+    var meta = {
+      title: 'SD MILIEU',
+      description: '',
+      keyword: ''
+    };
+    // ページ固有のCSS
+    var extCss = [];
+    // ページ固有のJS
+    var extJs = [];
+
+//- HTML本体
+doctype html
+html(lang='ja', prefix='og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#')
+  head
+    meta(charset='utf-8')
+    title!= meta.title
+    meta(name='description', content=meta.description)
+    meta(name='keywords', content=meta.keyword)
+    meta(name='viewport', content='width=device-width,initial-scale=1.0')
+    meta(name='format-detection', content='telephone=no')
+
+    //- COMMON CSS
+    link(rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css')
+    link(rel='stylesheet', href!='#{root_path}assets/css/common.css', media='all')
+    
+    //- PAGE CSS
+    each css in extCss
+      link(rel='stylesheet', href!=css, media='all')
+
+    //- COMMON JS
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+    script.
+      window.jQuery || document.write('<script src="./assets/js/lib/jquery.min.js"><\\/script>')
+    script(src!='#{root_path}assets/js/common.js')
+    
+    //-  PAGE JS
+    each js in extJs
+      script(src!=js)
+
+  body
+    .lContainer
+      header#GHead
+        p.logo: a(href!="<?php echo site_url(); ?>"): span.logoTxt SDMILIEU
+        .gnav
+          if is_dev
+            ul.navList
+              li: a(href="") ABOUT
+              li: a(href="") DEVELOPMENT
+              li: a(href="") DESIGN
+          else
+            |<?php wp_nav_menu( array ( 'theme_location' => 'g-nav' ) ); ?>
+
+
+      #Contents
+        block contents
+
+      footer#GFoot
+        p.copy Copyright(C) 2014-2016 SD MILIEU

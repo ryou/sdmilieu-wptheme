@@ -1,0 +1,22 @@
+.lContainer
+  +mq-pc
+    width: 960px
+    margin: 0 auto
+    box-sizing: border-box
+    padding: 0 10px
+  +mq-tb
+    width: 768px
+    margin: 0 auto
+    box-sizing: border-box
+    padding: 0 10px
+
+
+.lRow
+  +mq-pc
+    +clearfix
+    .lRow_main
+      float: right
+      +col(9)
+    .lRow_side
+      float: left
+      +col(3)

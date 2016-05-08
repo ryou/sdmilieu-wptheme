@@ -1,0 +1,71 @@
+extends ../etc/jade_templates/layout.jade
+
+//- layoutに記述されている情報をデフォルトとして使用するために「block append」を使用
+block append vars
+  - extCss = [root_path + 'assets/css/archive.css'];
+
+block contents
+  if is_dev
+    -
+      var article = {
+        title: '記事タイトル',
+        kv: '<img src="http://placehold.jp/700x300.png" alt="">',
+        author: 'ryou',
+        date: '04月 24, 2016',
+        datetime: '2016-04-24',
+        link: '#'
+      }
+  else
+    -
+      var article = {
+        title: '<?php the_title(); ?>',
+        kv: '<?php the_post_thumbnail(); ?>',
+        author: '<?php the_author(); ?>',
+        date: '<?php the_time("m月 j, Y"); ?>',
+        datetime: '<?php the_time("Y-m-j"); ?>',
+        content: '<?php the_excerpt(); ?>',
+        link: '<?php the_permalink(); ?>'
+      }
+
+  if !is_dev
+    |<?php if (have_posts()) : ?>
+  ul.articleList
+    if !is_dev
+      |<?php while (have_posts()) : the_post(); ?>
+    li
+      .mArticle
+        .lRow
+          .lRow_side
+            .mArticle_side
+              time.mArticle_date(datetime!=article.datetime) !{article.date}
+              p.mArticle_author by !{article.author}
+          .lRow_main
+            .mArticle_main
+              h2.mArticle_tit: a(href!=article.link) !{article.title}
+              .mArticle_categories
+                if is_dev
+                  ul
+                    li: a(href="#") カテゴリー
+                    li: a(href="#") カテゴリー
+                    li: a(href="#") カテゴリー
+                else
+                  |<?php the_category(); ?>
+              p.mArticle_kv !{article.kv}
+              .mArticle_content
+                p !{article.content}
+              .mArticle_more
+                a.mBtn.mBtn-link(href!=article.link) 続きを読む…
+    |<?php endwhile; ?>
+  if !is_dev
+    |<?php endif; ?>
+  .lRow
+    .lRow_main
+      .pagination
+        if is_dev
+          a(href="#").page-numbers PREV
+          a(href="#").page-numbers 1
+          span.page-numbers.current 2
+          a(href="#").page-numbers 3
+          a(href="#").page-numbers NEXT
+        else
+          |<?php echo_paginate(); ?>

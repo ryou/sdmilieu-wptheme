@@ -1,0 +1,29 @@
+#Contents .articleList {
+  margin-bottom: 8rem;
+}
+#Contents .articleList > li {
+  margin-top: 7rem;
+}
+#Contents .articleList > li:first-child {
+  margin-top: 0;
+}
+
+#Contents .pagination {
+  text-align: center;
+}
+#Contents .pagination .page-numbers {
+  display: inline-block;
+  margin: 0 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 5px;
+  color: #555555;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+#Contents .pagination .page-numbers.current {
+  background: #d5d5d5;
+  color: #ffffff;
+}
+#Contents .pagination a.page-numbers:hover {
+  background: #d5d5d5;
+}

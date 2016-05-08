@@ -1,0 +1,17 @@
+#Contents {
+  padding: 10rem 0;
+}
+#Contents .error {
+  text-align: center;
+}
+#Contents .error .status {
+  display: block;
+  font-weight: bold;
+  font-size: 8rem;
+  line-height: 1.1;
+}
+#Contents .error .note {
+  display: block;
+  font-size: 2rem; 
+  line-height: 1.2;
+}
